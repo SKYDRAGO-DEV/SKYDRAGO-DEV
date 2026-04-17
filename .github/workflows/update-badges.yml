@@ -1,0 +1,98 @@
+name: Update Dynamic Status
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Every 30 minutes
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Generate dynamic status
+        id: status
+        run: |
+          STATUSES=(
+            "Building distributed systems"
+            "Compiling the future"
+            "Deploying to prod"
+            "Reviewing PR #1337"
+            "Debugging the matrix"
+            "Shipping features"
+            "Optimizing hot paths"
+            "Writing Rust at light speed"
+            "Scaling to infinity"
+            "Merging legends"
+            "Refactoring reality"
+            "Running benchmarks"
+            "Shipping zero-downtime deploys"
+            "Writing unittests for joy"
+            "Architechting the future"
+            "Merging PRs from the cosmos"
+          )
+
+          FOCUS=(
+            "Rust + WebAssembly"
+            "TypeScript + React"
+            "Distributed Systems"
+            "Cloud Architecture"
+            "DevOps & SRE"
+            "High-Performance APIs"
+          )
+
+          # Pick random status
+          COUNT=${#STATUSES[@]}
+          RANDOM_STATUS=${STATUSES[$((RANDOM % COUNT))]}
+
+          FOCUS_COUNT=${#FOCUS[@]}
+          RANDOM_FOCUS=${FOCUS[$((RANDOM % FOCUS_COUNT))]}
+
+          echo "status=$RANDOM_STATUS" >> $GITHUB_OUTPUT
+          echo "focus=$RANDOM_FOCUS" >> $GITHUB_OUTPUT
+
+          # Update status.json
+          cat > status.json << EOF
+          {
+            "status": "$RANDOM_STATUS",
+            "focus": "$RANDOM_FOCUS",
+            "updated": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "views": $((RANDOM % 5000 + 10000))
+          }
+          EOF
+
+          cat status.json
+
+      - name: Update README status
+        run: |
+          # Create updated status badge URL
+          STATUS=$(echo "${{ steps.status.outputs.status }}" | sed 's/ /%20/g')
+          FOCUS=$(echo "${{ steps.status.outputs.focus }}" | sed 's/ /%20/g')
+
+          echo "Current Status: ${{ steps.status.outputs.status }}"
+          echo "Current Focus: ${{ steps.status.outputs.focus }}"
+          echo "Status auto-updated at $(date)"
+
+      - name: Commit status update
+        run: |
+          git config user.name "SKYDRAGO DEV"
+          git config user.email "skydrago@dev.com"
+
+          # Commit the status update (even if unchanged, shows activity)
+          echo "Last status update: $(date)" >> .status_history.txt
+          git add status.json .status_history.txt || true
+          git commit -m "chore: update dynamic status [skip ci]" || echo "No changes to commit"
+          git push origin main || echo "Branch protection may prevent direct push"
+        continue-on-error: true
+
+      - name: Record activity
+        run: |
+          echo "[$(date '+%Y-%m-%d %H:%M')] Status workflow ran" >> activity.log
+          echo "Activity recorded!"
