@@ -1,0 +1,31 @@
+name: Update Profile Stats
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update profile timestamp
+        run: |
+          DATE=$(date '+%Y-%m-%d %H:%M:%S UTC')
+          echo "Last updated: $DATE" >> .last_updated.txt
+          echo "Profile auto-updated at $DATE"
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "skydrago@dev.com"
+          git config --local user.name "SKYDRAGO DEV"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: auto-update profile stats [skip ci]"
+          git push

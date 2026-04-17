@@ -1,0 +1,15 @@
+name: Profile Visitor Counter
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  increment-visitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Visit profile
+        run: |
+          curl -sI "https://github.com/SKYDRAGO-DEV" > /dev/null
+          echo "Profile visited at $(date)"
