@@ -17,14 +17,6 @@
 
 ---
 
-## Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=SKYDRAGO-DEV&theme=nord&column=7&no-frame=true&margin-w=8&margin-h=8&rank=SECRET,LEGENDARY,MYTHIC,EPIC,RARE,UNCOMMON,COMMON" alt="Trophies" />
-</p>
-
----
-
 ## Stats
 
 <p align="center">
