@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Setup activity branch and commit
         run: |
-          git clone https://github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git /tmp/activity-work
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git /tmp/activity-work
           cd /tmp/activity-work
           git config user.name "SKYDRAGO DEV"
           git config user.email "skydrago@dev.com"
@@ -26,7 +26,7 @@ jobs:
             git checkout --orphan activity
             git rm -rf . 2>/dev/null || true
             git commit --allow-empty -m "chore: initialize activity branch [skip ci]"
-            git push origin activity
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git activity
           fi
 
           COMMIT_COUNT=$((RANDOM % 4 + 1))
