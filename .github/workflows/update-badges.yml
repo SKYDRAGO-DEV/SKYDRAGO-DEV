@@ -17,8 +17,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Generate dynamic status
-        id: status
+      - name: Generate and apply dynamic status
         run: |
           STATUSES=(
             "Building distributed systems"
@@ -35,8 +34,10 @@ jobs:
             "Running benchmarks"
             "Shipping zero-downtime deploys"
             "Writing unittests for joy"
-            "Architechting the future"
+            "Architecting the future"
             "Merging PRs from the cosmos"
+            "Fixing bugs before bugs exist"
+            "Compiling dreams into binaries"
           )
 
           FOCUS=(
@@ -46,53 +47,40 @@ jobs:
             "Cloud Architecture"
             "DevOps & SRE"
             "High-Performance APIs"
+            "Go + gRPC"
+            "Python + ML"
           )
 
-          # Pick random status
-          COUNT=${#STATUSES[@]}
-          RANDOM_STATUS=${STATUSES[$((RANDOM % COUNT))]}
+          STATUS=${STATUSES[$((RANDOM % ${#STATUSES[@]}))]}
+          FOCUS_ITEM=${FOCUS[$((RANDOM % ${#FOCUS[@]}))]}
 
-          FOCUS_COUNT=${#FOCUS[@]}
-          RANDOM_FOCUS=${FOCUS[$((RANDOM % FOCUS_COUNT))]}
-
-          echo "status=$RANDOM_STATUS" >> $GITHUB_OUTPUT
-          echo "focus=$RANDOM_FOCUS" >> $GITHUB_OUTPUT
+          # Escape for sed
+          ESCAPED_STATUS=$(echo "$STATUS" | sed 's/[\/&]/\\&/g')
+          ESCAPED_FOCUS=$(echo "$FOCUS_ITEM" | sed 's/[\/&]/\\&/g')
 
           # Update status.json
           cat > status.json << EOF
           {
-            "status": "$RANDOM_STATUS",
-            "focus": "$RANDOM_FOCUS",
-            "updated": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "views": $((RANDOM % 5000 + 10000))
+            "status": "$STATUS",
+            "focus": "$FOCUS_ITEM",
+            "updated": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           }
           EOF
 
-          cat status.json
+          # Update README status line using marker
+          if grep -q "DYNAMIC_STATUS_START" README.md; then
+            # Update between markers
+            sed -i "s/DYNAMIC_STATUS_START.*DYNAMIC_STATUS_END/DYNAMIC_STATUS_START ⚡ $ESCAPED_STATUS • 🎯 Focus: $ESCAPED_FOCUS DYNAMIC_STATUS_END/" README.md
+          fi
 
-      - name: Update README status
-        run: |
-          # Create updated status badge URL
-          STATUS=$(echo "${{ steps.status.outputs.status }}" | sed 's/ /%20/g')
-          FOCUS=$(echo "${{ steps.status.outputs.focus }}" | sed 's/ /%20/g')
+          echo "Status: $STATUS"
+          echo "Focus: $FOCUS_ITEM"
 
-          echo "Current Status: ${{ steps.status.outputs.status }}"
-          echo "Current Focus: ${{ steps.status.outputs.focus }}"
-          echo "Status auto-updated at $(date)"
-
-      - name: Commit status update
+      - name: Commit and push
         run: |
           git config user.name "SKYDRAGO DEV"
           git config user.email "skydrago@dev.com"
-
-          # Commit the status update (even if unchanged, shows activity)
-          echo "Last status update: $(date)" >> .status_history.txt
-          git add status.json .status_history.txt || true
-          git commit -m "chore: update dynamic status [skip ci]" || echo "No changes to commit"
-          git push origin main || echo "Branch protection may prevent direct push"
+          git add status.json README.md || true
+          git diff --quiet || git commit -m "chore: update dynamic status [skip ci]"
+          git push origin main || echo "Push skipped (no changes or protected)"
         continue-on-error: true
-
-      - name: Record activity
-        run: |
-          echo "[$(date '+%Y-%m-%d %H:%M')] Status workflow ran" >> activity.log
-          echo "Activity recorded!"

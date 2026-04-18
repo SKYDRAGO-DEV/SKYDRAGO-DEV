@@ -237,6 +237,16 @@ A: I have merged PRs in my sleep. My GitHub streak is measured
 
 ---
 
+## STATUS
+
+<p align="center">
+
+<!-- DYNAMIC_STATUS_START ⚡ Building distributed systems • 🎯 Focus: Rust + WebAssembly DYNAMIC_STATUS_END -->
+
+</p>
+
+---
+
 ## CONNECT
 
 <p align="center">

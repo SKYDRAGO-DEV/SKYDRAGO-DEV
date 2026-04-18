@@ -12,32 +12,38 @@ jobs:
   generate-commits:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout activity branch
-        uses: actions/checkout@v4
-        with:
-          ref: activity
-          persist-credentials: false
-
-      - name: Configure git
+      - name: Clone repo and setup activity branch
         run: |
+          git clone --bare https://github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git /tmp/activity-repo
+          cd /tmp/activity-repo
+          # Try to fetch activity branch, create if missing
+          if git fetch origin activity:activity 2>/dev/null; then
+            echo "Branch exists, will update"
+          else
+            echo "Creating new activity branch"
+            # Create empty initial commit on new branch
+            git symbolic-ref HEAD refs/heads/activity
+            git commit --allow-empty -m "chore: initialize activity branch [skip ci]"
+            git push origin activity 2>/dev/null || true
+          fi
+
+      - name: Checkout and commit
+        run: |
+          git clone https://github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git /tmp/activity-work
+          cd /tmp/activity-work
           git config user.name "SKYDRAGO DEV"
           git config user.email "skydrago@dev.com"
-          git config commit.gpgsign false
+          git checkout activity || git checkout -b activity
 
-      - name: Generate realistic commits
-        id: commits
-        run: |
           COMMIT_COUNT=$((RANDOM % 4 + 1))
           echo "Generating $COMMIT_COUNT commits..."
 
           for i in $(seq 1 $COMMIT_COUNT); do
-            # Generate realistic backdated timestamps
             DAYS_AGO=$((RANDOM % 7))
             HOURS_AGO=$((RANDOM % 24))
             DATE=$(date -d "$DAYS_AGO days ago $HOURS_AGO hours ago" -Iseconds 2>/dev/null || \
                    date -v-${DAYS_AGO}d -v-${HOURS_AGO}H -Iseconds)
 
-            # Create meaningful commit messages
             MESSAGES=(
               "feat: optimize performance in core modules"
               "fix: resolve edge case in distributed cache"
@@ -57,7 +63,6 @@ jobs:
             )
 
             MSG=${MESSAGES[$((RANDOM % ${#MESSAGES[@]}))]}
-
             echo "update_$(date +%s)" >> progress.log
             git add .
             GIT_COMMITTER_DATE="$DATE" git commit --date="$DATE" -m "$MSG [skip ci]" || true
@@ -69,29 +74,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: SKYDRAGO-DEV/SKYDRAGO-DEV
           branch: activity
           force: true
-          tags: false
-
-  update-contribution-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Update contribution branch
-        uses: actions/checkout@v4
-        with:
-          ref: contribution-graph
-          persist-credentials: false
-
-      - name: Update contribution file
-        run: |
-          date >> contributions.log || echo "$(date)" >> contributions.log
-          echo "$(date '+%Y-%m-%d %H:%M') - contribution" >> contributions.log
-
-          git config user.name "SKYDRAGO DEV"
-          git config user.email "skydrago@dev.com"
-
-          git add contributions.log
-          git commit -m "chore: update contribution log [skip ci]" || true
-          git push GITHUB_TOKEN@github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git HEAD:refs/heads/contribution-graph || true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          directory: /tmp/activity-work
