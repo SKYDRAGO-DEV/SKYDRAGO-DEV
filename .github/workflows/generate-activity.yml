@@ -12,28 +12,22 @@ jobs:
   generate-commits:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone repo and setup activity branch
-        run: |
-          git clone --bare https://github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git /tmp/activity-repo
-          cd /tmp/activity-repo
-          # Try to fetch activity branch, create if missing
-          if git fetch origin activity:activity 2>/dev/null; then
-            echo "Branch exists, will update"
-          else
-            echo "Creating new activity branch"
-            # Create empty initial commit on new branch
-            git symbolic-ref HEAD refs/heads/activity
-            git commit --allow-empty -m "chore: initialize activity branch [skip ci]"
-            git push origin activity 2>/dev/null || true
-          fi
-
-      - name: Checkout and commit
+      - name: Setup activity branch and commit
         run: |
           git clone https://github.com/SKYDRAGO-DEV/SKYDRAGO-DEV.git /tmp/activity-work
           cd /tmp/activity-work
           git config user.name "SKYDRAGO DEV"
           git config user.email "skydrago@dev.com"
-          git checkout activity || git checkout -b activity
+
+          # Create activity branch if it doesn't exist yet
+          if git rev-parse --verify origin/activity >/dev/null 2>&1; then
+            git checkout activity
+          else
+            git checkout --orphan activity
+            git rm -rf . 2>/dev/null || true
+            git commit --allow-empty -m "chore: initialize activity branch [skip ci]"
+            git push origin activity
+          fi
 
           COMMIT_COUNT=$((RANDOM % 4 + 1))
           echo "Generating $COMMIT_COUNT commits..."
