@@ -1,94 +1,114 @@
-<p align="center">
+<div align="center">
 
+# SKYDRAGO DEV
+
+### FX Markets × Quantitative Research × Trading Systems Engineering
+
+Building toward a focused portfolio of reproducible market research, risk-management tooling, backtesting infrastructure, market-data systems, and trading automation.
+
+</div>
+
+---
+
+## Focus
+
+My current engineering direction is centered on the intersection of **foreign-exchange markets** and **software systems**:
+
+- FX / Forex market research
+- Quantitative analysis and statistical testing
+- Backtesting methodology and execution assumptions
+- Position sizing and risk-management tooling
+- Market-data ingestion, validation, and analytics
+- Trading automation and execution engineering
+- Session, volatility, spread, and exposure analysis
+
+The standard is simple: **research should be reproducible, assumptions should be explicit, and public claims should be supported by working code.**
+
+## Engineering Foundation
+
+Public work currently demonstrates experience across:
+
+- **Python** — algorithms, data-oriented tooling, research-oriented development
+- **Rust** — API and systems-oriented development
+- **TypeScript / Node.js** — CLI and application tooling
+- **PostgreSQL / SQL** — application data infrastructure
+- **Terraform** — infrastructure as code
+- **Docker / Kubernetes** — containerized deployment and orchestration
+- **GitHub Actions** — CI and engineering automation
+
+I intentionally separate technologies I have demonstrated publicly from technologies or trading systems that are still being developed.
+
+## Quant / Trading Engineering Principles
+
+```text
+Data integrity
+    ↓
+Explicit assumptions
+    ↓
+Reproducible research
+    ↓
+Risk-first architecture
+    ↓
+Testable strategy logic
+    ↓
+Realistic execution modelling
+    ↓
+Transparent evaluation
 ```
-██╗  ██╗██╗ ██████╗ ██╗  ██╗████████╗██╗  ██╗ ██████╗ ██╗   ██╗
-██║  ██║██║██╔════╝ ██║  ██║╚══██╔══╝██║  ██║██╔═══██╗╚██╗ ██╔╝
-███████║██║██║  ███╗███████║   ██║   ███████║██║   ██║ ╚████╔╝
-██╔══██║██║██║   ██║██╔══██║   ██║   ██╔══██║██║   ██║  ╚██╔╝
-██║  ██║██║╚██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝   ██║
-╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝    ╚═╝
-```
 
-### Software Architect // Systems Engineer // Open Source Enthusiast
+Core principles:
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=jetbrains+mono&size=18&duration=3000&pause=1200&color=63B3ED&vCenter=true&random=false&width=600&lines=Rust%20%7C%20TypeScript%20%7C%20Go%20%7C%20Python%20%7C%20Cloud%20%7C%20DevOps" alt="Typing" />
-</p>
+- No manufactured performance metrics
+- No guaranteed-return claims
+- No hidden execution assumptions
+- No synthetic GitHub activity
+- Separation of signal, risk, and execution logic
+- Spread, slippage, fees, timezone, and data-quality effects treated explicitly where relevant
+- Out-of-sample and walk-forward validation preferred over in-sample storytelling
 
----
+## Portfolio Direction
 
-## Stats
+The Forex/Quant portfolio is being organized around substantive systems rather than placeholder repositories. Priority project classes include:
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=SKYDRAGO-DEV&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=63B3ED&text_color=bb9af7&icon_color=7dcfff&show_icons=true&include_all_commits=true&cache_seconds=1800" alt="Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SKYDRAGO-DEV&theme=tokyonight&layout=donut&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=bb9af7" alt="Languages" />
-</p>
+| Area | Engineering objective |
+| --- | --- |
+| **FX Research** | Market statistics, volatility, correlation, session and spread analytics |
+| **Backtesting** | Strategy interfaces, execution assumptions, trade accounting and validation |
+| **Risk** | Pip value, position sizing, exposure, drawdown and portfolio-risk controls |
+| **Market Data** | Ingestion, validation, normalization, storage and feature generation |
+| **Execution** | Broker/API abstractions, order handling, monitoring and execution analytics |
+| **Trading Automation** | Testable workflows with clear separation between research and live execution |
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=SKYDRAGO-DEV&theme=tokyonight&border_radius=8&border_color=63B3ED&stroke=63B3ED&fire=63B3ED&ring=7dcfff&currStreakNum=bb9af7&sideNums=bb9af7&currStreakLabel=bb9af7&sideLabels=bb9af7&dates=7dcfff&background=%230d0d1a" alt="Streak" />
-</p>
+Repositories will be promoted here only when they contain meaningful implementation, tests, documentation, and reproducible examples.
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=SKYDRAGO-DEV&theme=tokyo-night&bg_color=0d0d1a&color=7dcfff&line=63B3ED&point=bb9af7&area_color=63B3ED30&hide_border=false" alt="Activity" />
-</p>
+## Existing Engineering Work
 
----
+A small number of non-trading repositories remain public because they document the software-engineering foundation supporting the transition into quantitative and trading systems:
 
-## Snake Game
+- [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) — infrastructure-as-code and container orchestration work
+- [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) — algorithm and data-structure implementations
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/SKYDRAGO-DEV/SKYDRAGO-DEV/main/output/snake.svg" alt="Snake" />
-</p>
+Other legacy repositories are being treated as secondary, archival, or refactoring candidates rather than presented as flagship work.
 
-<p align="center">
-  <a href="https://SKYDRAGO-DEV.github.io/snake-game" target="_blank">
-    <img src="https://img.shields.io/badge/PLAY%20SNAKE%20GAME-CLICK%20HERE-red?style=for-the-badge&logo=gamepad&logoColor=white" alt="Play" />
-  </a>
-</p>
+## Research Standard
 
----
+For quantitative or strategy-oriented work, published results should document, where applicable:
 
-## Pinned Repos
+- data source and date range
+- timezone and session definitions
+- missing-data and bad-tick handling
+- spread, commission, slippage, swap, and latency assumptions
+- look-ahead / leakage controls
+- parameter-selection process
+- out-of-sample or walk-forward evaluation
+- drawdown and risk statistics
 
-<p align="center">
-  <a href="https://github.com/SKYDRAGO-DEV/skycli">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SKYDRAGO-DEV&repo=skycli&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=a9b1d6&icon_color=7dcfff&show_owner=true" alt="skycli" />
-  </a>
-  <a href="https://github.com/SKYDRAGO-DEV/rust-web-api">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SKYDRAGO-DEV&repo=rust-web-api&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=a9b1d6&icon_color=7dcfff&show_owner=true" alt="rust-web-api" />
-  </a>
-  <a href="https://github.com/SKYDRAGO-DEV/devops-toolkit">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SKYDRAGO-DEV&repo=devops-toolkit&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=a9b1d6&icon_color=7dcfff&show_owner=true" alt="devops-toolkit" />
-  </a>
-  <a href="https://github.com/SKYDRAGO-DEV/typescript-fullstack">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SKYDRAGO-DEV&repo=typescript-fullstack&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=a9b1d6&icon_color=7dcfff&show_owner=true" alt="typescript-fullstack" />
-  </a>
-  <a href="https://github.com/SKYDRAGO-DEV/cloud-infra">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SKYDRAGO-DEV&repo=cloud-infra&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=a9b1d6&icon_color=7dcfff&show_owner=true" alt="cloud-infra" />
-  </a>
-  <a href="https://github.com/SKYDRAGO-DEV/algorithms-datastructures">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=SKYDRAGO-DEV&repo=algorithms-datastructures&theme=tokyonight&border_radius=12&border_color=63B3ED&bg_color=0d0d1a&title_color=7dcfff&text_color=a9b1d6&icon_color=7dcfff&show_owner=true" alt="algorithms-datastructures" />
-  </a>
-</p>
+**Backtested or simulated results are not equivalent to live-trading performance.**
+
+## Collaboration
+
+Interested in technically serious work around **FX research, quantitative tooling, market data, backtesting, risk systems, and trading infrastructure**.
 
 ---
 
-## Tech Stack
-
-<p align="center">
-
-| | | | | | | |
-|:--|:--|:--|:--|:--|:--|:--|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" width="36" height="36" /> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="36" height="36" /> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="36" height="36" /> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" width="36" height="36" /> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="36" height="36" /> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg" width="36" height="36" /> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" width="36" height="36" /> |
-
-</p>
-
----
-
-<p align="center">
-  <a href="https://github.com/SKYDRAGO-DEV"><img src="https://img.shields.io/badge/GitHub-0d0d1a?style=for-the-badge&logo=github&logoColor=63B3ED" /></a>
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,63B3ED,7dcfff,bb9af7,ff79c6&height=80&section=footer&text=SKYDRAGO%20DEV&fontSize=32&animation=fadeIn" alt="Footer" />
-</p>
+<sub>Research and educational work only. Nothing published here constitutes financial or investment advice. Trading involves substantial risk, and historical or simulated results do not guarantee future performance.</sub>
