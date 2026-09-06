@@ -4,7 +4,7 @@
 
 ### FX Markets × Quantitative Research × Trading Systems Engineering
 
-Building toward a focused portfolio of reproducible market research, risk-management tooling, backtesting infrastructure, market-data systems, and trading automation.
+Building deterministic risk, market-data, backtesting, and research tooling with explicit assumptions, reproducible logic, and no manufactured performance claims.
 
 </div>
 
@@ -12,7 +12,7 @@ Building toward a focused portfolio of reproducible market research, risk-manage
 
 ## Focus
 
-My current engineering direction is centered on the intersection of **foreign-exchange markets** and **software systems**:
+My engineering direction is centered on the intersection of **foreign-exchange markets** and **software systems**:
 
 - FX / Forex market research
 - Quantitative analysis and statistical testing
@@ -23,6 +23,27 @@ My current engineering direction is centered on the intersection of **foreign-ex
 - Session, volatility, spread, and exposure analysis
 
 The standard is simple: **research should be reproducible, assumptions should be explicit, and public claims should be supported by working code.**
+
+## Featured FX System
+
+### [`FX Risk CLI`](https://github.com/SKYDRAGO-DEV/skycli)
+
+A tested TypeScript command-line utility for deterministic Forex risk calculations.
+
+Current implementation includes:
+
+- Risk-based position sizing
+- Standard and JPY-pair pip-size handling
+- Pip-value conversion into account currency
+- Explicit quote-currency → account-currency conversion requirements
+- Configurable contract size, lot step, and minimum lot
+- Risk-safe lot rounding
+- Direction-aware long/short reward-to-risk validation
+- Human-readable and JSON output
+- Strict TypeScript checks and automated tests
+- CI verification on Node.js 20 and 22
+
+The tool intentionally does **not** connect to brokers, fetch live prices, place trades, or claim profitability. Its purpose is transparent and testable pre-trade risk calculation.
 
 ## Engineering Foundation
 
@@ -36,7 +57,7 @@ Public work currently demonstrates experience across:
 - **Docker / Kubernetes** — containerized deployment and orchestration
 - **GitHub Actions** — CI and engineering automation
 
-I intentionally separate technologies I have demonstrated publicly from technologies or trading systems that are still being developed.
+I intentionally separate technologies demonstrated publicly from technologies or trading systems that are still being developed.
 
 ## Quant / Trading Engineering Principles
 
@@ -66,29 +87,29 @@ Core principles:
 - Spread, slippage, fees, timezone, and data-quality effects treated explicitly where relevant
 - Out-of-sample and walk-forward validation preferred over in-sample storytelling
 
-## Portfolio Direction
+## Portfolio Architecture
 
-The Forex/Quant portfolio is being organized around substantive systems rather than placeholder repositories. Priority project classes include:
+The Forex/Quant portfolio is being developed around substantive systems rather than placeholder repositories:
 
 | Area | Engineering objective |
 | --- | --- |
+| **Risk** | Pip value, position sizing, exposure, drawdown and portfolio-risk controls |
 | **FX Research** | Market statistics, volatility, correlation, session and spread analytics |
 | **Backtesting** | Strategy interfaces, execution assumptions, trade accounting and validation |
-| **Risk** | Pip value, position sizing, exposure, drawdown and portfolio-risk controls |
 | **Market Data** | Ingestion, validation, normalization, storage and feature generation |
 | **Execution** | Broker/API abstractions, order handling, monitoring and execution analytics |
 | **Trading Automation** | Testable workflows with clear separation between research and live execution |
 
-Repositories will be promoted here only when they contain meaningful implementation, tests, documentation, and reproducible examples.
+Repositories are promoted here only when they contain meaningful implementation, tests, documentation, and reproducible examples.
 
-## Existing Engineering Work
+## Supporting Engineering Work
 
-A small number of non-trading repositories remain public because they document the software-engineering foundation supporting the transition into quantitative and trading systems:
+A small number of non-trading repositories remain public because they document software-engineering foundations relevant to quantitative and trading systems:
 
 - [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) — infrastructure-as-code and container orchestration work
 - [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) — algorithm and data-structure implementations
 
-Other legacy repositories are being treated as secondary, archival, or refactoring candidates rather than presented as flagship work.
+Other legacy repositories are treated as secondary, archival, or refactoring candidates rather than flagship work.
 
 ## Research Standard
 
