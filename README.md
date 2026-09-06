@@ -28,7 +28,7 @@ The operating standard is simple: **public claims should be supported by working
 
 | Repository | Status | What it demonstrates |
 | --- | --- | --- |
-| [`skycli`](https://github.com/SKYDRAGO-DEV/skycli) | **Flagship — FX Risk CLI v0.2.0** | Position sizing, pip-value conversion, directional R:R, multi-position native-currency exposure, strict TypeScript validation, automated tests, CI |
+| [`skycli`](https://github.com/SKYDRAGO-DEV/skycli) | **Flagship — FX Risk CLI v0.3.0** | Position sizing, pip-value conversion, directional R:R, native FX exposure, explicit account-currency notional valuation, drawdown-aware risk budgeting, automated tests and CI |
 | [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) | **Supporting** | Terraform infrastructure, Kubernetes manifests, infrastructure validation, secret/state hygiene and CI discipline |
 | [`rust-web-api`](https://github.com/SKYDRAGO-DEV/rust-web-api) | **Supporting** | Runnable Axum API foundation, typed Rust modules, JWT utilities, tests and strict CI |
 | [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | **Reference** | TypeScript/Python algorithm implementations with real tests and validation |
@@ -41,7 +41,7 @@ Off-topic hobby projects and upstream forks are not treated as flagship work.
 
 ### [`FX Risk CLI`](https://github.com/SKYDRAGO-DEV/skycli)
 
-A tested TypeScript command-line utility for transparent Forex risk and native-currency exposure calculations.
+A tested TypeScript command-line system for transparent Forex risk calculations and deterministic account-level risk controls.
 
 Current implementation includes:
 
@@ -53,14 +53,18 @@ Current implementation includes:
 - Risk-safe lot rounding
 - Direction-aware long/short reward-to-risk validation
 - Multi-position native-currency exposure aggregation
-- Runtime validation for exposure position inputs
+- Explicit account-currency exposure valuation from supplied conversion factors
+- Gross absolute and net converted notional reporting
+- Drawdown-aware risk-budget calculation
+- Aggregate modeled open-risk limits
+- `allowed`, `reduced`, and `blocked` pre-trade risk states
 - Human-readable and JSON output
-- Strict TypeScript checks and automated tests
+- Strict TypeScript checks and automated financial-calculation tests
 - CI verification on Node.js 20 and 22
 - Production-dependency auditing
 - Security, contribution, and changelog documentation
 
-The tool intentionally does **not** connect to brokers, fetch live prices, place trades, calculate VaR/CVaR, or claim profitability. Exposure is reported in native currency units so the repository does not imply account-currency portfolio risk without the market/conversion data needed to support that claim.
+The tool intentionally does **not** connect to brokers, fetch live prices, place trades, calculate VaR/CVaR, estimate P&L, model broker margin, or claim profitability. Converted exposure is explicitly treated as a notional equivalent, and the risk-budget layer is a deterministic policy gate rather than a probabilistic portfolio-risk model.
 
 ## Quant / Trading Engineering Principles
 
@@ -86,7 +90,9 @@ Core principles:
 - No guaranteed-return claims
 - No hidden execution assumptions
 - No synthetic GitHub activity
-- Separation of signal, risk, and execution logic
+- Separation of signal, risk, valuation, and execution logic
+- Native exposure separated from account-currency valuation
+- Notional valuation separated from VaR/P&L/margin claims
 - Spread, slippage, fees, timezone, and data-quality effects treated explicitly where relevant
 - Out-of-sample and walk-forward validation preferred over in-sample storytelling
 
@@ -94,7 +100,7 @@ Core principles:
 
 Public repositories currently support claims around:
 
-- **TypeScript / Node.js** — CLI and API tooling
+- **TypeScript / Node.js** — FX risk CLI and API tooling
 - **Python** — algorithms and data-oriented utilities
 - **Rust / Axum** — typed API and systems-oriented development
 - **Terraform** — infrastructure as code
@@ -109,7 +115,7 @@ The Forex/Quant portfolio is being developed around substantive systems rather t
 
 | Area | Engineering objective |
 | --- | --- |
-| **Risk** | Pip value, position sizing, exposure, drawdown and portfolio-risk controls |
+| **Risk** | Pip value, position sizing, currency exposure, account valuation, drawdown and aggregate open-risk controls |
 | **FX Research** | Market statistics, volatility, correlation, session and spread analytics |
 | **Backtesting** | Strategy interfaces, execution assumptions, trade accounting and validation |
 | **Market Data** | Ingestion, validation, normalization, storage and feature generation |
