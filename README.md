@@ -10,25 +10,38 @@ Building deterministic risk, market-data, backtesting, and research tooling with
 
 ---
 
-## Focus
+## What I Build
 
 My engineering direction is centered on the intersection of **foreign-exchange markets** and **software systems**:
 
-- FX / Forex market research
-- Quantitative analysis and statistical testing
+- FX / Forex market research tooling
+- Position sizing and risk-management systems
 - Backtesting methodology and execution assumptions
-- Position sizing and risk-management tooling
 - Market-data ingestion, validation, and analytics
-- Trading automation and execution engineering
 - Session, volatility, spread, and exposure analysis
+- Trading automation and execution engineering
+- Quantitative/statistical research workflows
 
-The standard is simple: **research should be reproducible, assumptions should be explicit, and public claims should be supported by working code.**
+The operating standard is simple: **public claims should be supported by working code, assumptions should be explicit, and research should be reproducible.**
+
+## Public Portfolio Snapshot
+
+| Repository | Status | What it demonstrates |
+| --- | --- | --- |
+| [`skycli`](https://github.com/SKYDRAGO-DEV/skycli) | **Flagship — FX Risk CLI** | Deterministic position sizing, pip-value conversion, directional R:R, strict TypeScript validation, automated tests, CI |
+| [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) | **Supporting** | Terraform infrastructure, Kubernetes manifests, infrastructure validation and CI discipline |
+| [`rust-web-api`](https://github.com/SKYDRAGO-DEV/rust-web-api) | **Supporting** | Runnable Axum API foundation, typed Rust modules, JWT utilities, tests and strict CI |
+| [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | **Reference** | TypeScript/Python algorithm implementations with real tests and validation |
+| [`typescript-fullstack`](https://github.com/SKYDRAGO-DEV/typescript-fullstack) | **Legacy / secondary** | Small TypeScript/Express API experiment retained without simulated authentication claims |
+| [`devops-toolkit`](https://github.com/SKYDRAGO-DEV/devops-toolkit) | **Legacy / superseded** | Historical AWS Terraform work superseded by `cloud-infra` |
+
+Off-topic hobby projects and upstream forks are not treated as flagship work.
 
 ## Featured FX System
 
 ### [`FX Risk CLI`](https://github.com/SKYDRAGO-DEV/skycli)
 
-A tested TypeScript command-line utility for deterministic Forex risk calculations.
+A tested TypeScript command-line utility for transparent Forex risk calculations.
 
 Current implementation includes:
 
@@ -42,22 +55,10 @@ Current implementation includes:
 - Human-readable and JSON output
 - Strict TypeScript checks and automated tests
 - CI verification on Node.js 20 and 22
+- Production-dependency auditing
+- Security, contribution, and changelog documentation
 
 The tool intentionally does **not** connect to brokers, fetch live prices, place trades, or claim profitability. Its purpose is transparent and testable pre-trade risk calculation.
-
-## Engineering Foundation
-
-Public work currently demonstrates experience across:
-
-- **Python** — algorithms, data-oriented tooling, research-oriented development
-- **Rust** — API and systems-oriented development
-- **TypeScript / Node.js** — CLI and application tooling
-- **PostgreSQL / SQL** — application data infrastructure
-- **Terraform** — infrastructure as code
-- **Docker / Kubernetes** — containerized deployment and orchestration
-- **GitHub Actions** — CI and engineering automation
-
-I intentionally separate technologies demonstrated publicly from technologies or trading systems that are still being developed.
 
 ## Quant / Trading Engineering Principles
 
@@ -87,6 +88,19 @@ Core principles:
 - Spread, slippage, fees, timezone, and data-quality effects treated explicitly where relevant
 - Out-of-sample and walk-forward validation preferred over in-sample storytelling
 
+## Demonstrated Engineering Stack
+
+Public repositories currently support claims around:
+
+- **TypeScript / Node.js** — CLI and API tooling
+- **Python** — algorithms and data-oriented utilities
+- **Rust / Axum** — typed API and systems-oriented development
+- **Terraform** — infrastructure as code
+- **Kubernetes** — deployment/orchestration manifests
+- **GitHub Actions** — CI, testing, formatting and validation automation
+
+Technologies such as **MQL4/MQL5, MetaTrader integrations, Pine Script, broker APIs, FIX connectivity, live execution, and production trading deployment are not claimed here until substantive public implementation exists.**
+
 ## Portfolio Architecture
 
 The Forex/Quant portfolio is being developed around substantive systems rather than placeholder repositories:
@@ -100,16 +114,7 @@ The Forex/Quant portfolio is being developed around substantive systems rather t
 | **Execution** | Broker/API abstractions, order handling, monitoring and execution analytics |
 | **Trading Automation** | Testable workflows with clear separation between research and live execution |
 
-Repositories are promoted here only when they contain meaningful implementation, tests, documentation, and reproducible examples.
-
-## Supporting Engineering Work
-
-A small number of non-trading repositories remain public because they document software-engineering foundations relevant to quantitative and trading systems:
-
-- [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) — infrastructure-as-code and container orchestration work
-- [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) — algorithm and data-structure implementations
-
-Other legacy repositories are treated as secondary, archival, or refactoring candidates rather than flagship work.
+Repositories are promoted to flagship status only when they contain meaningful implementation, tests, documentation, and reproducible examples.
 
 ## Research Standard
 
