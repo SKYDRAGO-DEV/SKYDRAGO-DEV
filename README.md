@@ -28,8 +28,8 @@ The operating standard is simple: **public claims should be supported by working
 
 | Repository | Status | What it demonstrates |
 | --- | --- | --- |
-| [`skycli`](https://github.com/SKYDRAGO-DEV/skycli) | **Flagship — FX Risk CLI** | Deterministic position sizing, pip-value conversion, directional R:R, strict TypeScript validation, automated tests, CI |
-| [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) | **Supporting** | Terraform infrastructure, Kubernetes manifests, infrastructure validation and CI discipline |
+| [`skycli`](https://github.com/SKYDRAGO-DEV/skycli) | **Flagship — FX Risk CLI v0.2.0** | Position sizing, pip-value conversion, directional R:R, multi-position native-currency exposure, strict TypeScript validation, automated tests, CI |
+| [`cloud-infra`](https://github.com/SKYDRAGO-DEV/cloud-infra) | **Supporting** | Terraform infrastructure, Kubernetes manifests, infrastructure validation, secret/state hygiene and CI discipline |
 | [`rust-web-api`](https://github.com/SKYDRAGO-DEV/rust-web-api) | **Supporting** | Runnable Axum API foundation, typed Rust modules, JWT utilities, tests and strict CI |
 | [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | **Reference** | TypeScript/Python algorithm implementations with real tests and validation |
 | [`typescript-fullstack`](https://github.com/SKYDRAGO-DEV/typescript-fullstack) | **Legacy / secondary** | Small TypeScript/Express API experiment retained without simulated authentication claims |
@@ -41,7 +41,7 @@ Off-topic hobby projects and upstream forks are not treated as flagship work.
 
 ### [`FX Risk CLI`](https://github.com/SKYDRAGO-DEV/skycli)
 
-A tested TypeScript command-line utility for transparent Forex risk calculations.
+A tested TypeScript command-line utility for transparent Forex risk and native-currency exposure calculations.
 
 Current implementation includes:
 
@@ -52,13 +52,15 @@ Current implementation includes:
 - Configurable contract size, lot step, and minimum lot
 - Risk-safe lot rounding
 - Direction-aware long/short reward-to-risk validation
+- Multi-position native-currency exposure aggregation
+- Runtime validation for exposure position inputs
 - Human-readable and JSON output
 - Strict TypeScript checks and automated tests
 - CI verification on Node.js 20 and 22
 - Production-dependency auditing
 - Security, contribution, and changelog documentation
 
-The tool intentionally does **not** connect to brokers, fetch live prices, place trades, or claim profitability. Its purpose is transparent and testable pre-trade risk calculation.
+The tool intentionally does **not** connect to brokers, fetch live prices, place trades, calculate VaR/CVaR, or claim profitability. Exposure is reported in native currency units so the repository does not imply account-currency portfolio risk without the market/conversion data needed to support that claim.
 
 ## Quant / Trading Engineering Principles
 
