@@ -16,6 +16,16 @@ A reproducible pre-trade risk and evidence planner for different trading methods
 
 The **risk math is universal; the evidence checklist differs by trading method**. Users manually self-attest checks; the application does not verify them.
 
+## Fastest way — portable single HTML file
+
+Download [standalone.html](standalone.html) from GitHub using its **Download raw file** option, then open the saved HTML directly in a modern desktop browser. The application, calculation engine, style and export functionality are all embedded in the single file. **No Python server, account, API key, extension, or internet connection is required.** On some mobile devices the OS may restrict opening local HTML files; use a compatible local-file browser or the local HTTP method below.
+
+This portable file is generated from the tested source with [build-standalone.mjs](build-standalone.mjs). CI rebuilds it and checks the committed copy to prevent drift:
+
+~~~bash
+node tradegate/build-standalone.mjs
+~~~
+
 ## Run locally
 
 From the GitHub repository root:
