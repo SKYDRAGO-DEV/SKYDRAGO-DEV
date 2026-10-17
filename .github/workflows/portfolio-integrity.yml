@@ -1,0 +1,29 @@
+name: Public portfolio integrity
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "41 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-integrity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Python audit unit tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Verify public GitHub portfolio integrity
+        env:
+          GH_AUDIT_TOKEN: ${{ github.token }}
+        run: python3 scripts/portfolio_health.py
