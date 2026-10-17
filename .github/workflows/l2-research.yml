@@ -1,0 +1,51 @@
+name: L2 microstructure research checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/**'
+      - '.github/workflows/l2-research.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/**'
+      - '.github/workflows/l2-research.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Python ${{ matrix.python-version }} · L2 math and fixtures
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate module and tests
+        run: python -m compileall -q research
+      - name: Run microstructure regression tests
+        run: python -m unittest discover -s research/tests -p 'test_*.py' -v
+      - name: Execute deterministic demo without API credentials
+        run: |
+          python -m research.l2_reference research/examples/synthetic_books.json --levels 3 > /tmp/l2-demo.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('/tmp/l2-demo.json').read_text())
+          rows = result['features']
+          assert len(rows) == 3, rows
+          assert rows[0]['ofi_increment'] is None
+          assert rows[1]['ofi_increment'] == 9, rows
+          assert rows[1]['midprice'] == rows[0]['midprice']
+          assert rows[2]['ofi_increment'] == 19, rows
+          print('Demonstration output validated')
+          PY
