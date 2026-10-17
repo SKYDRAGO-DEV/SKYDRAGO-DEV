@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+<title id="title">SKYDRAGO DEV — Quantitative Systems and Market Microstructure</title>
+<desc id="desc">Dark precision-inspired engineering banner. Stylised limit order book depth bars, bid and ask ladder, and an analytical trace. All values are illustrative rather than live market data.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#060c1a"/><stop offset=".6" stop-color="#0c1629"/><stop offset="1" stop-color="#071322"/></linearGradient>
+<linearGradient id="accent" x1="0" y1="0" x2="1"><stop stop-color="#2ae6c7"/><stop offset="1" stop-color="#7c9cff"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#253951" stroke-width=".7" opacity=".55"/></pattern>
+<clipPath id="cardclip"><rect x="8" y="8" rx="18" width="1184" height="324"/></clipPath>
+</defs>
+<rect width="1200" height="340" fill="#050a13"/>
+<rect x="8" y="8" rx="18" width="1184" height="324" fill="url(#bg)" stroke="#234059" stroke-width="1.5"/>
+<g clip-path="url(#cardclip)">
+<rect width="1200" height="340" fill="url(#grid)" opacity=".48"/>
+<path d="M0 278C170 260 230 300 350 278S520 265 660 281" fill="none" stroke="#12b8a4" stroke-width="2" opacity=".32"/>
+<g font-family="Consolas,Menlo,monospace" fill="#a1b4cc">
+<text x="45" y="48" font-size="14" letter-spacing="3" fill="#2ae6c7">S K Y D R A G O   /   E N G I N E E R I N G</text>
+<rect x="45" y="68" width="5" height="104" rx="2" fill="url(#accent)"/>
+<text x="66" y="114" font-size="42" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#e8f3ff">QUANT  /  MARKET</text>
+<text x="66" y="160" font-size="42" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#e8f3ff">MICROSTRUCTURE</text>
+<text x="47" y="208" font-size="17" fill="#b4c6dd">FX RISK  •  ORDER BOOK DYNAMICS  •  REPRODUCIBLE RESEARCH</text>
+<rect x="45" y="241" width="329" height="36" rx="8" fill="#132c3b" stroke="#28566b"/>
+<text x="59" y="264" font-size="13" fill="#67e7cc">EVIDENCE OVER CLAIMS  //  v1</text>
+<text x="46" y="311" font-size="12" letter-spacing="1.5" fill="#8198b3">RESEARCH MODELS ARE NOT LIVE TRADING SIGNALS</text>
+</g>
+<line x1="710" y1="48" x2="710" y2="299" stroke="#2b4058" stroke-width="1"/>
+<g font-family="Consolas,Menlo,monospace">
+<text x="740" y="56" font-size="13" fill="#9bb4cd" letter-spacing="2">L2 / ILLUSTRATIVE BOOK</text>
+<text x="744" y="89" font-size="13" fill="#2ae6c7">BID</text><text x="918" y="89" font-size="13" fill="#e8ad6d">ASK</text>
+<g fill="#1bc0ac" opacity=".74"><rect x="744" y="107" width="138" height="18" rx="3"/><rect x="777" y="140" width="105" height="18" rx="3"/><rect x="809" y="173" width="73" height="18" rx="3"/><rect x="755" y="206" width="127" height="18" rx="3"/><rect x="826" y="239" width="56" height="18" rx="3"/></g>
+<g fill="#d79d6c" opacity=".74"><rect x="924" y="107" width="81" height="18" rx="3"/><rect x="924" y="140" width="116" height="18" rx="3"/><rect x="924" y="173" width="60" height="18" rx="3"/><rect x="924" y="206" width="157" height="18" rx="3"/><rect x="924" y="239" width="94" height="18" rx="3"/></g>
+<g fill="#bed0df" font-size="11"><text x="884" y="120">01</text><text x="884" y="153">02</text><text x="884" y="186">03</text><text x="884" y="219">04</text><text x="884" y="252">05</text></g>
+<text x="744" y="291" fill="#8da6be" font-size="11">DEPTH ≠ CERTAINTY   |   NO LIVE FEED</text>
+</g>
+</g>
+</svg>

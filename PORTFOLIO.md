@@ -14,6 +14,12 @@ This inventory is intentionally conservative. **Source code, tests and CI logsâ€
 | [rust-web-api](https://github.com/SKYDRAGO-DEV/rust-web-api) | Supporting: backend | Axum health API, JWT utilities and tests, graceful shutdown, Rust CI | Not a production-ready authenticated API service |
 | [algorithms-datastructures](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | Supporting: foundations | TypeScript/Python graph, sorting and data-structure implementations with tests | No claim of Go/Rust implementations or comprehensive coverage |
 
+## Quant + L2 market microstructure research example
+
+The [L2 / Orderflow Research Desk](research/README.md) in this profile repository now includes a small original, inspectable Python feature reference: top-of-book queue imbalance, multi-level displayed depth imbalance, microprice, spread and best-quote order-flow imbalance. A three-snapshot synthetic fixture and offline tests are provided.
+
+**Classification:** educational research prototype, not a flagship prediction model. The implementation does not connect to ATAS, Rithmic, exchange multicast feeds, MBO/L3, MetaTrader or real broker order routing. There are no forward returns, backtest performance numbers, model edge or claims of profitable execution.
+
 ## Historical / learning projects
 
 | Repository | Status |

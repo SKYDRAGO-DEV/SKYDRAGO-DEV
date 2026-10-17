@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp_ms": 0,
+    "bids": [
+      {"price": 100.0, "size": 10},
+      {"price": 99.5, "size": 20},
+      {"price": 99.0, "size": 18}
+    ],
+    "asks": [
+      {"price": 100.5, "size": 12},
+      {"price": 101.0, "size": 13},
+      {"price": 101.5, "size": 21}
+    ]
+  },
+  {
+    "timestamp_ms": 100,
+    "bids": [
+      {"price": 100.0, "size": 15},
+      {"price": 99.5, "size": 18},
+      {"price": 99.0, "size": 18}
+    ],
+    "asks": [
+      {"price": 100.5, "size": 8},
+      {"price": 101.0, "size": 13},
+      {"price": 101.5, "size": 21}
+    ]
+  },
+  {
+    "timestamp_ms": 200,
+    "bids": [
+      {"price": 100.5, "size": 11},
+      {"price": 100.0, "size": 15},
+      {"price": 99.5, "size": 18}
+    ],
+    "asks": [
+      {"price": 101.0, "size": 9},
+      {"price": 101.5, "size": 15},
+      {"price": 102.0, "size": 20}
+    ]
+  }
+]
