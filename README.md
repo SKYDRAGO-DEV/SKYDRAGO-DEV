@@ -12,6 +12,7 @@ Building risk-first software for foreign-exchange research and trading-system de
 [![Cloud Infra CI](https://github.com/SKYDRAGO-DEV/cloud-infra/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SKYDRAGO-DEV/cloud-infra/actions/workflows/ci.yml)
 [![Rust API CI](https://github.com/SKYDRAGO-DEV/rust-web-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SKYDRAGO-DEV/rust-web-api/actions/workflows/ci.yml)
 [![Algorithms CI](https://github.com/SKYDRAGO-DEV/algorithms-datastructures/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SKYDRAGO-DEV/algorithms-datastructures/actions/workflows/ci.yml)
+[![GitHub API Diagnostic CI](https://github.com/SKYDRAGO-DEV/valcier-frameforge/actions/workflows/github-api-health.yml/badge.svg?branch=main)](https://github.com/SKYDRAGO-DEV/valcier-frameforge/actions/workflows/github-api-health.yml)
 
 </div>
 
@@ -45,8 +46,17 @@ Primary areas:
 | [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | **Reference · CS Foundations** | TypeScript/Python algorithms, cycle-safe graph logic, validated Dijkstra/Union-Find boundaries, negative-aware counting sort, data structures, Jest + Python unit tests |
 | [`typescript-fullstack`](https://github.com/SKYDRAGO-DEV/typescript-fullstack) | **Archive · Secondary** | Small Express/TypeScript API retained as engineering history; import-safe application construction, sanitized 5xx responses and executable HTTP route tests |
 | [`devops-toolkit`](https://github.com/SKYDRAGO-DEV/devops-toolkit) | **Archive · Superseded** | Earlier AWS/Terraform work retained for history; superseded by `cloud-infra` |
+| [`valcier-frameforge`](https://github.com/SKYDRAGO-DEV/valcier-frameforge) | **Prototype · GitHub API integration** | Read-only GitHub REST API workflow diagnostics with regression tests and GitHub Actions; media generation not implemented |
 
 Upstream forks and off-topic hobby projects are intentionally excluded from the flagship portfolio signal.
+
+## GitHub API Integration & Developer Program
+
+Registered in the **GitHub Developer Program** (October 17, 2026). Membership was confirmed by a GitHub welcome email. This is a statement of program registration, **not** a claim that a profile badge has already been awarded or displayed.
+
+The [FRAMEFORGE GitHub Actions readiness diagnostic](https://github.com/SKYDRAGO-DEV/valcier-frameforge/blob/main/scripts/github_ci_health.py) is a genuine, read-only GitHub REST API integration. It inspects repository metadata, workflow availability, and recent CI runs; it includes offline regression tests and a [GitHub Actions workflow](https://github.com/SKYDRAGO-DEV/valcier-frameforge/actions/workflows/github-api-health.yml). It does **not** grant GitHub achievements, change account settings, or generate video.
+
+
 
 ## Flagship — FX Risk CLI
 
