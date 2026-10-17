@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="TRADEGATE: universal offline-first pre-trade risk and research checklist. Price Action, Quant, L2 Orderflow and EA/BOT trading workflows.">
+  <title>TRADEGATE · Universal Trading Risk Workbench</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to workbench</a>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="../README.md" aria-label="SKYDRAGO engineering profile">
+      <span class="brand-mark">V<span class="brand-spark">.</span></span>
+      <span><strong>TRADEGATE</strong><small>by SKYDRAGO DEV</small></span>
+    </a>
+    <div class="side-rule"></div>
+    <p class="nav-caption">OPERATING DESK</p>
+    <nav aria-label="Sections">
+      <a class="nav-link selected" href="#workbench"><span>01</span> Risk workbench</a>
+      <a class="nav-link" href="#evidence"><span>02</span> Method evidence</a>
+      <a class="nav-link" href="#protocol"><span>03</span> Methodology</a>
+    </nav>
+    <div class="side-spacer"></div>
+    <div class="side-note">
+      <span class="live-dot"></span> LOCAL · ZERO BROKER ACCESS
+      <p>All calculations happen in your browser. No orders, signals, tracking, accounts or network calls.</p>
+    </div>
+    <a class="side-github" href="https://github.com/SKYDRAGO-DEV/SKYDRAGO-DEV/tree/main/tradegate" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>
+  </aside>
+  <div class="main-column">
+    <header class="topbar">
+      <div class="crumb">RESEARCH SYSTEMS <span>/</span> UNIVERSAL TRADE READINESS</div>
+      <div class="chip">RESEARCH MVP <span class="chip-line"></span> v0.1</div>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ONE RISK LANGUAGE. EVERY TRADING METHOD.</div>
+        <h1 id="hero-title">Trade your <em>process.</em><br>Not your <em>impulse.</em></h1>
+        <p class="hero-intro">A transparent pre-trade decision workbench for price-action traders, quantitative researchers, L2 orderflow analysts and EA/bot builders. Calculate your position risk, review evidence and export an audit-ready plan.</p>
+        <div class="hero-metrics" aria-label="Capabilities">
+          <span><strong>05</strong> METHODS</span><span><strong>01</strong> RISK ENGINE</span><span><strong>00</strong> TRADE SIGNALS</span>
+        </div>
+      </section>
+      <section id="workbench" aria-label="Trade planning workbench">
+        <div class="section-heading">
+          <div><span class="section-index">01 / CONFIGURATION</span><h2>Pre-trade workbench</h2></div>
+          <p>Every instrument value is explicit—no hidden contract-size assumptions.</p>
+        </div>
+        <div class="demo-strip">
+          <span>LOAD ILLUSTRATIVE INPUTS</span>
+          <div class="demo-buttons">
+            <button type="button" data-demo="equity">Shares</button>
+            <button type="button" data-demo="futures">Futures</button>
+            <button type="button" data-demo="cfd">CFD / Gold</button>
+            <button type="button" data-demo="fx">FX / Bot</button>
+          </div>
+          <small>Examples are hypothetical. Never market prices or broker specifications.</small>
+        </div>
+        <div class="workspace">
+          <form id="tradeForm" novalidate autocomplete="off">
+            <div class="form-title"><span>TRADE SPECIFICATION</span><span class="form-legend">Fields marked * are required</span></div>
+            <div class="form-grid">
+              <label class="field wide"><span>Trading method *</span>
+                <select name="style" id="style">
+                  <option value="priceAction">Price Action / SMC</option>
+                  <option value="quant">Quant / Systematic</option>
+                  <option value="orderflow">Orderflow / DOM / L2</option>
+                  <option value="ea">EA / Algorithmic Bot</option>
+                  <option value="hybrid">Hybrid / Discretionary</option>
+                </select>
+              </label>
+              <label class="field wide"><span>Instrument / symbol</span><input name="symbol" maxlength="40" placeholder="Your instrument, e.g. EURUSD" value="DEMO-SHARE" spellcheck="false"></label>
+              <label class="field"><span>Account currency *</span><input name="currency" maxlength="3" value="USD" spellcheck="false"></label>
+              <label class="field"><span>Trade side *</span><select name="side"><option value="long">Long / Buy</option><option value="short">Short / Sell</option></select></label>
+              <label class="field"><span>Account equity *</span><input type="number" name="equity" step="any" min="0" value="10000"></label>
+              <label class="field"><span>Risk per trade (%) *</span><input type="number" name="riskPercent" step="any" min="0" value="1"></label>
+              <label class="field"><span>Entry price *</span><input type="number" name="entry" step="any" min="0" value="100"></label>
+              <label class="field"><span>Stop price *</span><input type="number" name="stop" step="any" min="0" value="98"></label>
+              <label class="field"><span>Target price *</span><input type="number" name="target" step="any" min="0" value="106"></label>
+              <label class="field"><span>Money / 1.0 price move / qty *</span><input type="number" name="pointValue" step="any" min="0" value="1" aria-describedby="pointHelp"></label>
+              <div class="field-hint wide" id="pointHelp">In your account currency. For futures, verify tick value ÷ tick size; for FX/CFDs confirm lot contract size and quote-to-account conversion with your broker.</div>
+              <label class="field"><span>Tick size (optional)</span><input type="number" name="tickSize" step="any" min="0" value="0.01"></label>
+              <label class="field"><span>Quantity step *</span><input type="number" name="quantityStep" step="any" min="0" value="1"></label>
+              <label class="field"><span>Min quantity *</span><input type="number" name="minQty" step="any" min="0" value="1"></label>
+              <label class="field"><span>Round-trip fee / qty *</span><input type="number" name="roundTripFeePerUnit" step="any" min="0" value="0.02"></label>
+              <label class="field wide"><span>Round-trip slippage allowance (price points) *</span><input type="number" name="slippagePoints" step="any" min="0" value="0.02"></label>
+            </div>
+            <details class="limits">
+              <summary>Risk-headroom constraints <span>optional but recommended ↓</span></summary>
+              <p>Input the **remaining risk headroom** from your own account or firm rule engine, in account-currency units. Omitted values are <strong>not checked</strong>. These are not a substitute for broker margin/firm rules.</p>
+              <div class="form-grid">
+                <label class="field"><span>Daily headroom remaining</span><input type="number" name="dailyHeadroom" min="0" step="any" placeholder="Not configured"></label>
+                <label class="field"><span>Total-loss headroom</span><input type="number" name="totalHeadroom" min="0" step="any" placeholder="Not configured"></label>
+                <label class="field"><span>Combined open-risk limit</span><input type="number" name="combinedOpenRiskLimit" min="0" step="any" value="300"></label>
+                <label class="field"><span>Existing modeled open risk *</span><input type="number" name="existingOpenRisk" min="0" step="any" value="50"></label>
+              </div>
+              <div class="field-hint">Do not subtract existing risk again from daily/total remaining headrooms if your supplied headroom already accounts for it. The aggregate cap subtracts the existing open risk explicitly.</div>
+            </details>
+            <div class="form-actions">
+              <button id="calculateBtn" type="submit" class="primary-btn">Evaluate trade plan <span aria-hidden="true">↗</span></button>
+              <button type="button" id="clearBtn" class="secondary-btn">Reset to demo</button>
+            </div>
+          </form>
+          <aside class="results" id="results" aria-label="Deterministic risk calculation" aria-live="polite">
+            <div class="panel-top"><span>02 / RISK OUTPUT</span><span>DETERMINISTIC</span></div>
+            <div class="result-status" id="riskStatus">NOT EVALUATED</div>
+            <p class="result-note" id="resultNote">Fill and evaluate the plan to calculate size and modeled risk.</p>
+            <div class="big-number"><span>MAX MODELED QUANTITY</span><strong id="sizeValue">—</strong></div>
+            <div class="number-grid">
+              <div><span>RISK BUDGET</span><strong id="budgetValue">—</strong></div>
+              <div><span>MODELED LOSS</span><strong id="lossValue">—</strong></div>
+              <div><span>NET R:R</span><strong id="rrValue">—</strong></div>
+              <div><span>BREAK-EVEN WIN RATE*</span><strong id="winValue">—</strong></div>
+            </div>
+            <div class="binding"><span>BINDING RISK CONSTRAINT</span><strong id="bindingValue">—</strong></div>
+            <div id="notices" class="notices" aria-label="Risk caveats"></div>
+          </aside>
+        </div>
+      </section>
+      <section id="evidence" class="evidence" aria-labelledby="evidence-title">
+        <div class="section-heading"><div><span class="section-index">02 / METHOD EVIDENCE</span><h2 id="evidence-title">Proof before position</h2></div><p>The checklist is human-confirmed, not independently verified.</p></div>
+        <div class="evidence-content">
+          <div class="checklist">
+            <div class="checklist-header"><span id="methodLabel">PRICE ACTION</span><strong id="evidenceProgress">0 / 4</strong></div>
+            <div id="evidenceList"></div>
+          </div>
+          <div class="verdict">
+            <span>PROCESS STATUS</span>
+            <strong id="processStatus">INCOMPLETE</strong>
+            <p id="processNote">Risk sizing and method-specific evidence are independent gates. Neither predicts trade profitability or authorizes an order.</p>
+            <button type="button" id="exportBtn" class="primary-btn" disabled>Export research plan JSON <span aria-hidden="true">↓</span></button>
+            <p class="export-hint">No automatic cloud sync. Export only when you choose; inspect files before sharing.</p>
+          </div>
+        </div>
+      </section>
+      <section id="protocol" class="protocol" aria-labelledby="protocol-title">
+        <div class="section-heading"><div><span class="section-index">03 / RESEARCH METHODOLOGY</span><h2 id="protocol-title">Universal rules. Different evidence.</h2></div></div>
+        <div class="protocol-grid">
+          <article><span>01</span><h3>Risk first</h3><p>A valid stop, contract value, modeled costs, conservative sizing and explicit account limits are prerequisites—not signs of profit.</p></article>
+          <article><span>02</span><h3>Method-specific proof</h3><p>Price action needs objective setups. Quant needs OOS validation. L2 needs venue-aligned data. Bots need kill switches and forward tests.</p></article>
+          <article><span>03</span><h3>Execution reality</h3><p>Stop prices are not guaranteed fills. Market liquidity, slippage, latency, margin and broker rules can invalidate any simple model.</p></article>
+        </div>
+        <div class="sources">Research/engineering references: <a href="https://www.cmegroup.com/education/courses/introduction-to-futures/calculating-futures-contract-profit-or-loss" target="_blank" rel="noopener noreferrer">CME contract P&amp;L mechanics ↗</a> · <a href="https://arxiv.org/abs/1011.6402" target="_blank" rel="noopener noreferrer">Order-flow imbalance research ↗</a> · <a href="../research/README.md">SKYDRAGO L2 lab ↗</a></div>
+      </section>
+    </main>
+    <footer><span>© SKYDRAGO DEV · TRADEGATE RESEARCH MVP</span><span>NO BROKER ACCESS · NOT FINANCIAL ADVICE</span></footer>
+  </div>
+</div>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
