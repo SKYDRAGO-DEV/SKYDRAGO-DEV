@@ -16,6 +16,8 @@ Building risk-first software for foreign-exchange research and trading-system de
 
 </div>
 
+**Explore the work:** [FX Risk CLI](https://github.com/SKYDRAGO-DEV/skycli) · [FRAMEFORGE demo](https://github.com/SKYDRAGO-DEV/valcier-frameforge) · [Portfolio and upstream attribution](PORTFOLIO.md)
+
 ---
 
 ## Engineering Focus
@@ -38,6 +40,8 @@ Primary areas:
 
 ## Verified Public Portfolio
 
+[Full portfolio map, lifecycle classifications and upstream fork credits](PORTFOLIO.md).
+
 | Repository | Role | Verified engineering signal |
 | --- | --- | --- |
 | [`skycli`](https://github.com/SKYDRAGO-DEV/skycli) | **Flagship · FX Risk CLI v0.3.0** | Position sizing, pip-value conversion, directional R:R, native FX exposure, account-currency notional valuation, aggregate/drawdown-aware risk budgeting, floating-point lot-step regression coverage, Node 20/22 CI and production-dependency audit |
@@ -46,7 +50,7 @@ Primary areas:
 | [`algorithms-datastructures`](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | **Reference · CS Foundations** | TypeScript/Python algorithms, cycle-safe graph logic, validated Dijkstra/Union-Find boundaries, negative-aware counting sort, data structures, Jest + Python unit tests |
 | [`typescript-fullstack`](https://github.com/SKYDRAGO-DEV/typescript-fullstack) | **Archive · Secondary** | Small Express/TypeScript API retained as engineering history; import-safe application construction, sanitized 5xx responses and executable HTTP route tests |
 | [`devops-toolkit`](https://github.com/SKYDRAGO-DEV/devops-toolkit) | **Archive · Superseded** | Earlier AWS/Terraform work retained for history; superseded by `cloud-infra` |
-| [`valcier-frameforge`](https://github.com/SKYDRAGO-DEV/valcier-frameforge) | **Prototype · GitHub API integration** | Read-only GitHub REST API workflow diagnostics with regression tests and GitHub Actions; media generation not implemented |
+| [`valcier-frameforge`](https://github.com/SKYDRAGO-DEV/valcier-frameforge) | **Prototype · Creative workflow research MVP** | FastAPI/SQLite browser demo, deterministic shot planning, DAG validation, simulated generation-job lifecycle, API tests, CI and a separate read-only GitHub REST API diagnostic; **no actual image/video generation** |
 
 Upstream forks and off-topic hobby projects are intentionally excluded from the flagship portfolio signal.
 
