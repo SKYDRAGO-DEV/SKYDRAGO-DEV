@@ -36,6 +36,14 @@ These are *portfolio classifications*, not claims that GitHub repository Archive
 
 Forking is useful for learning and contribution, but a fork alone is not evidence of original engineering or upstream maintainer status.
 
+## Automated inventory and integrity checks
+
+This portfolio is monitored by a [read-only GitHub Actions integrity workflow](.github/workflows/portfolio-integrity.yml) backed by [auditable Python code](scripts/portfolio_health.py) and [offline regression tests](tests/test_portfolio_health.py).
+
+The workflow checks 15 baseline repository identities and original-versus-fork attribution, the availability of required documentation/security/CI files in five actively maintained projects, and clearly documented, **non-blocking** warnings for descriptions that do not match implementation. It runs on profile changes, weekly and on manual request.
+
+This audit does **not** inspect privileged GitHub security settings, prove code safety, assign licences, or imply outside project adoption. GitHub repository About descriptions and topic changes require an authorized metadata update.
+
 ## Quality and safety contract
 
 For each maintained project, the preferred evidence is:
