@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/quant-l2-header.svg" width="100%" alt="SKYDRAGO DEV: Quant research, order book dynamics and risk systems. Stylised depth chart is illustrative, not live market data." />
+
 # SKYDRAGO DEV
 
 ### Quantitative Trading Systems Engineering
@@ -15,6 +17,8 @@ Building risk-first software for foreign-exchange research and trading-system de
 [![GitHub API Diagnostic CI](https://github.com/SKYDRAGO-DEV/valcier-frameforge/actions/workflows/github-api-health.yml/badge.svg?branch=main)](https://github.com/SKYDRAGO-DEV/valcier-frameforge/actions/workflows/github-api-health.yml)
 
 </div>
+
+**Research desk:** [L2 Microstructure Lab](research/README.md) · [Auditable Python model](research/l2_reference.py) · [Synthetic reproducible demo](research/examples/synthetic_books.json) · [Test suite](research/tests/test_l2_reference.py)
 
 **Explore the work:** [FX Risk CLI](https://github.com/SKYDRAGO-DEV/skycli) · [FRAMEFORGE demo](https://github.com/SKYDRAGO-DEV/valcier-frameforge) · [Portfolio and upstream attribution](PORTFOLIO.md)
 
@@ -34,9 +38,25 @@ Primary areas:
 - currency exposure and account-currency valuation;
 - pre-trade and drawdown-aware risk controls;
 - market-data and quantitative research architecture;
+- displayed order-book microstructure: best-quote OFI, microprice, L2 depth imbalance and feed-integrity boundaries;
 - realistic backtesting/execution assumptions;
 - infrastructure for APIs, research services, and data workloads;
 - testable automation with clear research/live-execution boundaries.
+
+## Quant / Orderflow — Experimental Research Desk
+
+**Orderflow is observed liquidity, not guaranteed intent.** The [microstructure research lab](research/README.md) contains a **dependency-free Python implementation**, synthetic three-snapshot dataset, invariant/edge-case tests and automated CI.
+
+| Research primitive | Inspectable implementation | Boundary |
+| --- | --- | --- |
+| **L2 liquidity asymmetry** | Multi-level depth imbalance, best-queue imbalance and spread (bps) | Displayed depth can cancel or replenish; no hidden-order visibility |
+| **Price-weighted pressure** | Best-quote microprice vs midpoint | Heuristic estimate, not a fill or guaranteed prediction |
+| **Event-time imbalance** | Cont–Kukanov–Stoikov-style best-quote OFI increment | Snapshots cannot distinguish trade consumption vs cancellation |
+| **Reproducibility** | Synthetic fixture, input validation, deterministic tests, Python 3.11/3.12 CI | No real data feed, order routing, forecasting or verified trading P&L |
+
+**Illustrative L2 calculation:** bid queue **10 → 15**; ask queue **12 → 8** at unchanged prices gives **OFI = +9**, while the mid-price remains **unchanged**. That is a descriptive observation, **not** a validated long signal.
+
+[**Explore equations, implementation, failure cases and CME futures → CFD caveats →**](research/README.md)
 
 ## Verified Public Portfolio
 
@@ -122,7 +142,8 @@ where practical, with explicit spread/slippage/fee models.
 | **CS / algorithm foundations** | Tested TypeScript + Python reference work |
 | **FX research engine** | Engineering direction; not yet promoted as a flagship implementation |
 | **Backtesting engine** | Engineering direction; no performance claims until substantive implementation and validation exist |
-| **Market-data pipeline** | Engineering direction |
+| **L2 microstructure feature reference** | Synthetic-snapshot Python implementation, defensive tests, experimental only |
+| **Market-data pipeline** | Engineering direction; no ATAS/Rithmic feed connector |
 | **Broker/live execution** | Not publicly implemented or claimed |
 
 ## Quant / Trading Engineering Standard
@@ -172,7 +193,7 @@ Transparent evaluation
 
 ## Demonstrated Stack
 
-**Trading / Quant:** FX risk mathematics, exposure modeling, deterministic portfolio-risk policy logic  
+**Trading / Quant:** FX risk mathematics, exposure modeling, deterministic portfolio-risk policy logic, synthetic L2/OFI/microprice research examples (not live feed)  
 **Languages:** TypeScript, Python, Rust  
 **Backend:** Node.js, Express, Axum  
 **Infrastructure:** Terraform, Kubernetes, AWS/GCP configuration patterns  
