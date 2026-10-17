@@ -9,27 +9,29 @@ A minimal, inspectable Python reference for how *displayed* limit-order-book sta
 
 | Feature | Definition | What it can / cannot establish |
 | --- | --- | --- |
-| Mid-price | \(m=(b+a)/2\) | Quote midpoint; not a tradeable fill |
-| Spread (bps) | \(10^4(a-b)/m\) | Displayed best-quote friction; not realized execution cost |
-| Best-queue imbalance | \((Q_b-Q_a)/(Q_b+Q_a)\) | Relative displayed liquidity; not true buyer/seller intent |
-| Multi-level L2 imbalance | \((\sum_{i=1}^{k}B_i-\sum_{i=1}^{k}A_i)/(\sum_{i=1}^{k}B_i+\sum_{i=1}^{k}A_i)\) | Aggregated book-depth asymmetry over top \`k\` levels; not a causal forecast |
-| Microprice | \((aQ_b+bQ_a)/(Q_b+Q_a)\) | Opposite-queue-weighted best quote; *estimator*, not an executable price |
+| Mid-price | $m=(b+a)/2$ | Quote midpoint; not a tradeable fill |
+| Spread (bps) | $10^4(a-b)/m$ | Displayed best-quote friction; not realized execution cost |
+| Best-queue imbalance | $(Q_b-Q_a)/(Q_b+Q_a)$ | Relative displayed liquidity; not true buyer/seller intent |
+| Multi-level L2 imbalance | $(\sum_{i=1}^{k}B_i-\sum_{i=1}^{k}A_i)/(\sum_{i=1}^{k}B_i+\sum_{i=1}^{k}A_i)$ | Aggregated book-depth asymmetry over top `k` levels; not a causal forecast |
+| Microprice | $(aQ_b+bQ_a)/(Q_b+Q_a)$ | Opposite-queue-weighted best quote; *estimator*, not an executable price |
 | Best-quote OFI increment | Quote-event accounting based on best bid/ask price and size updates | Approximation from consecutive snapshots; not signed trade delta or an independent trade feed |
 
-Notation: \(b,a\) are best bid/ask prices; \(Q_b,Q_a\) are resting displayed sizes at those prices; \(B_i,A_i\) are quantities at the *i*th price level on each side.
+Notation: $b,a$ are best bid/ask prices; $Q_b,Q_a$ are resting displayed sizes at those prices; $B_i,A_i$ are quantities at the *i*th price level on each side.
 
 ### Best-quote OFI (Cont–Kukanov–Stoikov convention)
 
-For successive snapshots \((b_{t-1},Q^b_{t-1},a_{t-1},Q^a_{t-1})\) and \((b_t,Q^b_t,a_t,Q^a_t)\):
+For successive snapshots $(b_{t-1},Q^b_{t-1},a_{t-1},Q^a_{t-1})$ and $(b_t,Q^b_t,a_t,Q^a_t)$:
 
-\[
+$$
+
 e_t = \mathbf{1}_{b_t\ge b_{t-1}}Q_t^b-\mathbf{1}_{b_t\le b_{t-1}}Q_{t-1}^b
 -\mathbf{1}_{a_t\le a_{t-1}}Q_t^a+\mathbf{1}_{a_t\ge a_{t-1}}Q_{t-1}^a
-\]
 
-When best quotes don't move: \(\mathrm{OFI}_t = \Delta Q^b_t-\Delta Q^a_t\). When quotes improve or worsen, the piecewise event formula accounts for the complete displayed best-level size at the changing price. Aggregated OFI over an event window is the **sum of event increments**, not the final queue imbalance.
+$$
 
-**Tiny reproducible calculation:** best bid stays at 100.0 with displayed quantity **10 → 15**, best ask stays at 100.5 with quantity **12 → 8**. The displayed best-quote OFI increment is \(+5 - (-4)=+9\) units. The mid-price is **unchanged**, illustrating why positive OFI alone is **not** a trading signal.
+When best quotes don't move: $\mathrm{OFI}_t = \Delta Q^b_t-\Delta Q^a_t$. When quotes improve or worsen, the piecewise event formula accounts for the complete displayed best-level size at the changing price. Aggregated OFI over an event window is the **sum of event increments**, not the final queue imbalance.
+
+**Tiny reproducible calculation:** best bid stays at 100.0 with displayed quantity **10 → 15**, best ask stays at 100.5 with quantity **12 → 8**. The displayed best-quote OFI increment is $+5 - (-4)=+9$ units. The mid-price is **unchanged**, illustrating why positive OFI alone is **not** a trading signal.
 
 A study by Cont, Kukanov and Stoikov reported that short-interval price impact related to best-quote order-flow imbalance and available market depth in their dataset. Those results are *not* validated on the synthetic examples here, and no performance or market-transfer inference is made.
 
@@ -37,12 +39,12 @@ A study by Cont, Kukanov and Stoikov reported that short-interval price impact r
 
 No dependencies outside the Python 3.11+ standard library.
 
-\`\`\`bash
+```bash
 python3 -m research.l2_reference research/examples/synthetic_books.json --levels 3
 python3 -m unittest discover -s research/tests -p 'test_*.py' -v
-\`\`\`
+```
 
-The output is a JSON object with a record per timestamp and explanatory feature names. The first observation has \`ofi_increment: null\` because there is no previous snapshot; all timestamps must be strictly increasing. The included [fixture](examples/synthetic_books.json) is explicitly **synthetic** and contains no market feed.
+The output is a JSON object with a record per timestamp and explanatory feature names. The first observation has `ofi_increment: null` because there is no previous snapshot; all timestamps must be strictly increasing. The included [fixture](examples/synthetic_books.json) is explicitly **synthetic** and contains no market feed.
 
 [Read the implementation](l2_reference.py) · [Inspect unit tests](tests/test_l2_reference.py) · [CI workflow](../.github/workflows/l2-research.yml)
 
@@ -72,7 +74,7 @@ An empirical strategy study must pre-register a horizon and labels, compare the 
 
 **Research taxonomy**
 
-\`\`\`text
+```text
 VENUE EVENT DATA
    → sequence/gap validation
    → book reconstruction + trade alignment
@@ -81,7 +83,7 @@ VENUE EVENT DATA
    → walk-forward evaluation + cost model
    → out-of-sample diagnostics
    → (only if justified) paper execution review
-\`\`\`
+```
 
 ## Sources and further reading
 
