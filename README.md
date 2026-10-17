@@ -20,6 +20,8 @@ Building risk-first software for foreign-exchange research and trading-system de
 
 **Research desk:** [L2 Microstructure Lab](research/README.md) · [Auditable Python model](research/l2_reference.py) · [Synthetic reproducible demo](research/examples/synthetic_books.json) · [Test suite](research/tests/test_l2_reference.py)
 
+**Trade for the process:** [TRADEGATE — Universal Pre-Trade Workbench](tradegate/README.md) · [Source & risk engine](tradegate/engine.mjs) · [Run locally](tradegate/README.md#run-locally)
+
 **Explore the work:** [FX Risk CLI](https://github.com/SKYDRAGO-DEV/skycli) · [FRAMEFORGE demo](https://github.com/SKYDRAGO-DEV/valcier-frameforge) · [Portfolio and upstream attribution](PORTFOLIO.md)
 
 ---
@@ -42,6 +44,18 @@ Primary areas:
 - realistic backtesting/execution assumptions;
 - infrastructure for APIs, research services, and data workloads;
 - testable automation with clear research/live-execution boundaries.
+
+## TRADEGATE — Universal Trading Risk Workbench
+
+**One transparent risk language, five trading methods.** [TRADEGATE](tradegate/README.md) is an original, no-backend browser research MVP for price-action/SMC, quantitative, L2/orderflow, EA/bot and hybrid traders.
+
+- Configurable monetary point value, tick/quantity increments, stop direction, round-trip fees and slippage.
+- Conservative maximum-size calculation with optional daily, total-loss and aggregate open-risk headrooms.
+- Method-specific self-attested evidence checklists, net R:R and simple break-even win-rate mathematics.
+- Locally generated JSON research-plan exports; no market feed, order routing, personal-data backend or guaranteed outcomes.
+- [Executable risk engine](tradegate/engine.mjs) · [Responsive app](tradegate/index.html) · [Node regression tests](tradegate/tests/engine.test.mjs) · [CI](.github/workflows/tradegate-ci.yml).
+
+**Status:** educational prototype with hypothetical examples; contract multipliers and trading rules must be independently verified at the broker. Neither risk sizing nor checked boxes approve an actual trade.
 
 ## Quant / Orderflow — Experimental Research Desk
 

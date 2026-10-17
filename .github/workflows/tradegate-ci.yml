@@ -1,0 +1,55 @@
+name: TRADEGATE verified risk engine
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tradegate/**'
+      - '.github/workflows/tradegate-ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tradegate/**'
+      - '.github/workflows/tradegate-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tradegate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Node ${{ matrix.node }} - model and UI syntax
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Check browser and model modules
+        run: |
+          node --check tradegate/engine.mjs
+          node --check tradegate/app.mjs
+          node --check tradegate/tests/engine.test.mjs
+      - name: Run deterministic model regression suite
+        run: node --test tradegate/tests/*.test.mjs
+      - name: Assert document and static asset paths
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('tradegate')
+          html = (root/'index.html').read_text()
+          for required in ('./style.css', './app.mjs', 'tradeForm', 'evidenceList', 'exportBtn'):
+              assert required in html, required
+          for item in ('style.css', 'app.mjs', 'engine.mjs', 'README.md'):
+              assert (root/item).is_file(), item
+          print('Static assets and browser entry point verified')
+          PY

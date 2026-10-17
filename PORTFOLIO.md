@@ -14,6 +14,12 @@ This inventory is intentionally conservative. **Source code, tests and CI logsâ€
 | [rust-web-api](https://github.com/SKYDRAGO-DEV/rust-web-api) | Supporting: backend | Axum health API, JWT utilities and tests, graceful shutdown, Rust CI | Not a production-ready authenticated API service |
 | [algorithms-datastructures](https://github.com/SKYDRAGO-DEV/algorithms-datastructures) | Supporting: foundations | TypeScript/Python graph, sorting and data-structure implementations with tests | No claim of Go/Rust implementations or comprehensive coverage |
 
+## TRADEGATE â€” method-independent pre-trade calculator and evidence checklist
+
+[TRADEGATE](tradegate/README.md) is a browser-based, deterministic educational **prototype** designed to be usable by price action, systematic/quant, orderflow and EA/bot traders. It implements explicitly priced risk per contract/lot/share, quantity-step rounding, optional risk-headroom limits, estimated fee/slippage-adjusted R:R and self-attested methodology checks. It can export a locally generated research plan as JSON.
+
+Source and automated tests are published under [tradegate/](tradegate/), with an independent Node 20/22 CI workflow. Examples are deliberately hypothetical and the app does **not** provide broker connections, live market values, automatic portfolio risk, margin requirements, trade signals, or a validated trading edge. **There is no claim of production-readiness or commercial adoption.**
+
 ## Quant + L2 market microstructure research example
 
 The [L2 / Orderflow Research Desk](research/README.md) in this profile repository now includes a small original, inspectable Python feature reference: top-of-book queue imbalance, multi-level displayed depth imbalance, microprice, spread and best-quote order-flow imbalance. A three-snapshot synthetic fixture and offline tests are provided.
