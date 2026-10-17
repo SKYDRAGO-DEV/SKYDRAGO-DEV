@@ -103,7 +103,7 @@ test("non-finite or missing numeric inputs fail closed", () => {
 });
 test("unsafe quantity precision and derived overflow fail closed", () => {
   assert.throws(() => assessTrade(plan({ quantityStep: 1e-12 })), /below 1e-8/);
-  assert.throws(() => assessTrade(plan({ quantityStep: 1e-8, pointValue: Number.MIN_VALUE })), PlanError);
+  assert.throws(() => assessTrade(plan({ quantityStep: 1e-8, pointValue: Number.MIN_VALUE, roundTripFeePerUnit: 0 })), PlanError);
   assert.throws(() => assessTrade(plan({ pointValue: Number.MAX_VALUE, slippagePoints: Number.MAX_VALUE })), PlanError);
 });
 test("zero risk capacity cannot create a trade even with integer step", () => {
