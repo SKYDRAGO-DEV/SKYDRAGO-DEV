@@ -89,7 +89,7 @@ Stops are not guaranteed execution prices. Gaps, slippage, commissions, executio
 
 No brokerage credentials, tokens or user-tracking SDKs are required. The app does not store entered amounts automatically. Clicking **Export research plan JSON** initiates a local browser download of the user's inputs, modeled risk and manually checked evidence. Review this file before sharing it.
 
-One external design dependency remains: CSS may fetch fonts from Google Fonts. Remove the font import in style.css for a completely network-isolated style.
+No external web fonts, CDNs, analytics scripts, storage or API calls are required by the application. All files are local when served over localhost.
 
 ## Current limitations
 
