@@ -20,7 +20,7 @@ Building risk-first software for foreign-exchange research and trading-system de
 
 **Research desk:** [L2 Microstructure Lab](research/README.md) · [Auditable Python model](research/l2_reference.py) · [Synthetic reproducible demo](research/examples/synthetic_books.json) · [Test suite](research/tests/test_l2_reference.py)
 
-**Trade for the process:** [TRADEGATE — Universal Pre-Trade Workbench](tradegate/README.md) · [Source & risk engine](tradegate/engine.mjs) · [Run locally](tradegate/README.md#run-locally)
+**Trade for the process:** [TRADEGATE — Universal Pre-Trade Workbench](tradegate/README.md) · [Portable offline edition](tradegate/standalone.html) · [Source & risk engine](tradegate/engine.mjs)
 
 **Explore the work:** [FX Risk CLI](https://github.com/SKYDRAGO-DEV/skycli) · [FRAMEFORGE demo](https://github.com/SKYDRAGO-DEV/valcier-frameforge) · [Portfolio and upstream attribution](PORTFOLIO.md)
 

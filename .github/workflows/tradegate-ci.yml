@@ -41,6 +41,11 @@ jobs:
           node --check tradegate/tests/engine.test.mjs
       - name: Run deterministic model regression suite
         run: node --test tradegate/tests/*.test.mjs
+      - name: Verify offline standalone bundle is reproducible
+        run: |
+          node --check tradegate/build-standalone.mjs
+          node tradegate/build-standalone.mjs
+          git diff --exit-code -- tradegate/standalone.html
       - name: Assert document and static asset paths
         run: |
           python3 - <<'PY'
